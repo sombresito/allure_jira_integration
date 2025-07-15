@@ -1,0 +1,174 @@
+/* Общий стиль заголовка */
+.header {
+    display: flex;
+    align-items: center; /* Центрируем элементы по вертикали */
+    justify-content: space-between; /* Заголовок слева, кнопка справа */
+    height: 60px; /* Фиксированная высота */
+    padding: 0 20px; /* Отступы слева и справа */
+}
+
+.header-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: normal; /* Убираем фиксированную высоту */
+}
+
+.header-button {
+    font-size: 14px; /* Размер шрифта */
+    height: auto; /* Автоматическая высота */
+    min-height: 36px; /* Минимальная высота */
+    line-height: normal; /* Убираем фиксированную высоту строки */
+}
+
+/* Класс для наших TextField*/
+.custom-text-field {
+    position: relative;
+
+}
+
+.custom-text-field::part(input-field) {
+    background-color: #ccffcc;
+    color: #006400;
+    box-sizing: border-box; /* Чтобы фон не «выходил» за границы */
+}
+
+/* Позиционируем сообщение об ошибке абсолютно */
+.custom-text-field::part(error-message) {
+    position: absolute;
+    bottom: -1.2em;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: #a00;
+    font-size: 0.9em;  /* Увеличили размер шрифта с 0.9em до 1.2em */
+    line-height: 0.9;  /* Можно задать line-height, чтобы текст выглядел аккуратно */
+    margin: 0;
+    padding: 0.2em 0;  /* Немного отступов сверху и снизу */
+}
+
+
+/* Для Vaadin-поля с классом .custom-text-field переопределяем стили автозаполнения */
+.custom-text-field input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #ccffcc inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #ccffcc inset !important;
+  -webkit-text-fill-color: #006400 !important;
+}
+
+/* Общие стили для остальных кнопок */
+.custom-button {
+    font-size: 20px;
+    padding: 15px;
+    background-color: #ccffcc;
+    color: #006400;
+    box-sizing: border-box;
+}
+
+
+.clear-button {
+    color: #006400;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    transform: scale(1);
+
+}
+
+.clear-button:hover {
+    transform: scale(1.05);
+}
+
+
+
+.cancel-button {
+    background: linear-gradient(to bottom, #d94f70, #b03060);
+    color: #ffffff;/* другой цвет текста */
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.cancel-button:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* Стили для кнопки "Удалить" по аналогии с кнопкой "Создать" */
+.delete-button {
+    background: linear-gradient(to bottom, #ff4c4c, #e60000);
+    color: #ffffff; /* другой цвет текста */
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.delete-button:hover {
+    transform: scale(1.05);
+}
+
+/* Стили для кнопки "Отмена" по аналогии с кнопкой "Создать" */
+.cancel-button {
+    background: linear-gradient(to bottom, #ffffcc, #ffff99); /* другой оттенок */
+    color: #666600; /* другой цвет текста */
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.cancel-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* Стили для кнопки "Создать" */
+.create-button {
+    background: linear-gradient(to bottom, #ccffcc, #99ff99);
+    color: #006400;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.create-button:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- Уведомления ---------- */
+.custom-notification::part(content) {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 10px 20px !important;
+}
+/* success - зелёный */
+.custom-notification[theme~="success"]::part(content) {
+    background-color: #4caf50 !important;
+    color: #FFFFFF !important;
+}
+/* error - красный */
+.custom-notification[theme~="error"]::part(content) {
+    background-color: #e32636 !important;
+    color: #FFFFFF !important;
+}
+/* warning - оранжевый */
+.custom-notification[theme~="warning"]::part(content) {
+    background-color: #FFA500 !important;
+    color: #FFFFFF !important;
+}
+
+
+

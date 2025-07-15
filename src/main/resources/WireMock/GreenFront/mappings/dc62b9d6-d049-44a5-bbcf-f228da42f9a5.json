@@ -1,0 +1,18 @@
+{
+  "id" : "dc62b9d6-d049-44a5-bbcf-f228da42f9a5",
+  "name" : "GreenFront",
+  "request" : {
+    "url" : "/some/testing",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "Hello, testff!",
+    "headers" : {
+      "Content-Type" : "text/plain"
+    }
+  },
+  "uuid" : "dc62b9d6-d049-44a5-bbcf-f228da42f9a5",
+  "persistent" : true,
+  "insertionIndex" : 7
+}

@@ -1,0 +1,19 @@
+.btn-analyse {
+  background: #28a745;     /* зелёный как на картинке */
+  color: #fff;
+  border: none;
+  border-radius: 20px;     /* скругление */
+  font-weight: 700;
+  padding: 6px 22px;
+}
+
+.btn-analyse:hover,
+.btn-analyse:focus {
+  background: #23913d;     /* чуть темнее при наведении */
+  color: #fff;
+}
+
+.analysis-box {
+  overflow-y: auto;
+  max-height: 400px; /* можешь подобрать подходящую высоту */
+}

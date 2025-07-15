@@ -1,0 +1,18 @@
+{
+  "id" : "96df14cd-5be7-496d-be07-cb49c46909d6",
+  "name" : "Test111",
+  "request" : {
+    "url" : "/some/testing",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "Hello, test111!",
+    "headers" : {
+      "Content-Type" : "text/plain"
+    }
+  },
+  "uuid" : "96df14cd-5be7-496d-be07-cb49c46909d6",
+  "persistent" : true,
+  "insertionIndex" : 7
+}

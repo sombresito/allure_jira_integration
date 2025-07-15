@@ -1,0 +1,136 @@
+.auto-view {
+    margin: 0; /* Убираем внешние отступы */
+    padding: 0; /* Убираем внутренние отступы */
+    width: 100%; /* Растягиваем на всю ширину */
+    background: #1E8449; /* Тёмно-зелёный фон */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(255, 255, 255, 0.9);
+    color: #FDFEFE; /* Белый текст */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
+    display: flex; /* Flex для выравнивания */
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: space-between; /* Заголовок слева, кнопка справа */
+    height: 60px; /* Фиксированная высота */
+    overflow: hidden; /* Обрезаем выходящий контент */
+}
+
+.auto-view .header-title {
+    color: #FDFEFE; /* Белый текст */
+    margin: 0; /* Убираем внешние отступы */
+    padding: 0 0 0 20px; /* Внутренний отступ слева */
+    font-size: 24px; /* Размер шрифта */
+    font-weight: bold; /* Жирный текст */
+    line-height: 60px; /* Совпадает с высотой заголовка */
+    white-space: nowrap; /* Запрещаем перенос текста */
+}
+
+.auto-view .header-button {
+    margin-right: 20px; /* Отступ справа */
+    background: linear-gradient(to bottom, #007bff, #0056b3); /* Градиент фона */
+    color: #fff; /* Белый текст */
+    border: none;
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer;
+    font-size: 14px; /* Размер шрифта */
+    transition: all 0.3s ease; /* Плавный переход при наведении */
+    line-height: 45px; /* Центрирование текста внутри кнопки */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Тень для объема */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); /* Тень текста */
+}
+
+.auto-view .header-button:hover {
+    background: linear-gradient(to bottom, #0056b3, #003d80); /* Градиент при наведении */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Усиленная тень при наведении */
+    transform: translateY(-2px); /* Приподнимаем кнопку */
+}
+
+.auto-view .header-button:active {
+    background: linear-gradient(to bottom, #003d80, #0056b3); /* Градиент при нажатии */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Слабая тень при нажатии */
+    transform: translateY(2px); /* Опускаем кнопку */
+}
+
+.auto-view .send-button {
+    margin: 10px; /* Отступ вокруг кнопки */
+    background: linear-gradient(to bottom, #28a745, #1e7e34); /* Градиент зеленого */
+    color: #fff; /* Белый текст */
+    border: none;
+    border-radius: 5px; /* Закругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    cursor: pointer;
+    font-size: 16px; /* Размер шрифта */
+    transition: all 0.3s ease; /* Плавный переход при наведении */
+    line-height: 45px; /* Центрируем текст внутри кнопки */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Тень для объема */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); /* Тень текста */
+}
+
+.auto-view .send-button:hover {
+    background: linear-gradient(to bottom, #1e7e34, #145b23); /* Более темный зеленый при наведении */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Усиленная тень при наведении */
+    transform: translateY(-2px); /* Приподнимаем кнопку */
+}
+
+.auto-view .send-button:active {
+    background: linear-gradient(to bottom, #145b23, #1e7e34); /* Цвет при нажатии */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Слабая тень при нажатии */
+    transform: translateY(2px); /* Опускаем кнопку */
+}
+
+.response-field-custom {
+    background: #BFBFBF; /* Фон */
+    width: 800px;
+    height: 400px;
+    border: 1px solid #000000;
+    border-radius: 7px;
+    color: #333333; /* Тёмно-серый текст */
+    padding: 10px; /* Внутренние отступы */
+    box-sizing: border-box; /* Учитываем границы */
+    overflow-y: auto; /* Скроллинг для длинного текста */
+}
+
+.input-custom {
+    background: #BFBFBF; /* Фон */
+    width: 800px;
+    min-height: 30px; /* Минимальная высота */
+    border: 1px solid #000000;
+    border-radius: 9px;
+    line-height: 1.2; /* Высота строки */
+    padding: 5px; /* Внутренние отступы */
+    color: #333333; /* Цвет текста */
+}
+
+.auto-view-content {
+    background: linear-gradient(135deg, #A9A9A9); /* Градиентный фон */
+    padding: 20px; /* Отступы */
+    flex-grow: 1; /* Занимает оставшееся пространство */
+    display: flex;
+    justify-content: center; /* Центрируем контент по горизонтали */
+    align-items: center; /* Центрируем контент по вертикали */
+}
+
+/* Кнопка в хедере (сверху справа) */
+.header-button {
+    margin-right: 20px; /* Отступ справа */
+    background: linear-gradient(to bottom, #007bff, #0056b3); /* Градиент фона */
+    color: #fff; /* Белый текст */
+    border: none;
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer;
+    font-size: 14px; /* Размер шрифта */
+    transition: all 0.3s ease; /* Плавный переход при наведении */
+    line-height: 45px; /* Центрируем текст внутри кнопки */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Тень для объема */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); /* Тень текста */
+}
+
+.header-button:hover {
+    background: linear-gradient(to bottom, #0056b3, #003d80); /* Градиент при наведении */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Усиленная тень при наведении */
+    transform: translateY(-2px); /* Приподнимаем кнопку */
+}
+
+.header-button:active {
+    background: linear-gradient(to bottom, #003d80, #0056b3); /* Градиент при нажатии */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Слабее тень при нажатии */
+    transform: translateY(2px); /* Опускаем кнопку */
+}

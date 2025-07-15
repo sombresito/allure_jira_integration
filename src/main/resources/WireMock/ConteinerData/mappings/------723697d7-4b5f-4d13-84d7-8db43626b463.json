@@ -1,0 +1,18 @@
+{
+  "id" : "723697d7-4b5f-4d13-84d7-8db43626b463",
+  "name" : "Простая заглушка - Привет мир!",
+  "request" : {
+    "url" : "/some/thing",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "Hello world!",
+    "headers" : {
+      "Content-Type" : "text/plain"
+    }
+  },
+  "uuid" : "723697d7-4b5f-4d13-84d7-8db43626b463",
+  "persistent" : true,
+  "insertionIndex" : 0
+}

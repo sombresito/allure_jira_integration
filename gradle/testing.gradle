@@ -1,0 +1,42 @@
+////// junit //////
+
+tasks.withType(Test).configureEach {
+    minHeapSize = "256m"
+    maxHeapSize = "2G"
+    reports {
+        junitXml.required.set(false) // Отключаем JUnit XML отчеты
+        html.required.set(true) // Включаем HTML отчеты
+    }
+    testLogging {
+        showCauses = true
+        showStackTraces = true
+        showExceptions = true
+        exceptionFormat = "full"
+        // events "started", "skipped", "failed"
+    }
+    jacoco {
+        enabled = true
+    }
+    finalizedBy(tasks.named("jacocoTestReport"))
+}
+
+////// jacoco //////
+
+tasks.named("jacocoTestReport").configure {
+    reports {
+        xml.required.set(true) // Включаем XML отчеты
+        csv.required.set(false) // Отключаем CSV отчеты
+        html.required.set(true) // Включаем HTML отчеты
+    }
+}
+
+tasks.named("jacocoTestCoverageVerification").configure {
+    mustRunAfter(tasks.named("jacocoTestReport"))
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.7 // Минимальный уровень покрытия
+            }
+        }
+    }
+}

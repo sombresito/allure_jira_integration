@@ -1,0 +1,264 @@
+.main-layout {
+    background: linear-gradient(135deg, #707070, #e0e0e0);
+    color: #dcdcdc;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+/* ---------- Верхняя панель (top-bar) ---------- */
+.top-bar {
+    box-sizing: border-box;
+    width: 100%;
+    height: 64px;
+    background: #1E8449;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7), inset 0px 0px 8px rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    color: #dcdcdc;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.9),
+        -1px -1px 1px rgba(255, 255, 255, 0.1);
+    margin: 0;
+    padding: 0;
+}
+
+.back-button {
+    margin-right: 20px;
+    margin-top: auto;
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    line-height: normal;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.back-button:hover {
+    background: linear-gradient(to bottom, #0056b3, #003d80);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+.back-button:active {
+    background: linear-gradient(to bottom, #003d80, #0056b3);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
+
+/* ---------- Upload компоненты ---------- */
+.upload-component {
+    margin-top: 20px;
+    --lumo-base-color: transparent;
+    --lumo-contrast: #FFFFFF;
+    color: #FFFFFF;
+}
+.upload-label {
+    color: #FFFFFF;
+}
+.vaadin-upload,
+.vaadin-checkbox,
+.vaadin-combo-box,
+.vaadin-button,
+.vaadin-text-field,
+.vaadin-text-area,
+.vaadin-label {
+    color: #FFFFFF;
+}
+
+/* ---------- Поле названия сценария ---------- */
+.scenario-name-field {
+    width: 50%;
+    margin: 15px 0;
+}
+.scenario-name-field::part(input-field) {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid #FFFFFF30;
+    color: #ffffff;
+}
+.scenario-name-field:hover::part(input-field),
+.scenario-name-field:focus::part(input-field) {
+    border-color: #10a37f !important;
+}
+
+/* ---------- Чекбоксы ---------- */
+.checkbox {
+    --lumo-primary-text-color: #FFFFFF;
+    --lumo-contrast: #FFFFFF;
+    color: #FFFFFF;
+}
+.vaadin-checkbox.checkbox:hover [part="checkbox"],
+.vaadin-checkbox.checkbox:focus [part="checkbox"] {
+    border-color: #10a37f !important;
+}
+.vaadin-checkbox.checkbox [part="checkbox"] {
+    background-color: transparent !important;
+    border: 2px solid #FFFFFF !important;
+}
+.vaadin-checkbox.checkbox[checked] [part="checkbox"] {
+    background-color: #10a37f !important;
+    border-color: #10a37f !important;
+}
+.vaadin-checkbox.checkbox[checked] [part="label"] {
+    color: #FFFFFF !important;
+}
+
+/* ---------- Details/Combobox ---------- */
+.combobox {
+    --lumo-base-color: transparent;
+    --lumo-contrast: #FFFFFF;
+    --lumo-primary-color: #10a37f;
+    --lumo-primary-text-color: #FFFFFF;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+.vaadin-combo-box-overlay {
+    width: 400px !important;
+    max-height: 300px;
+}
+.vaadin-combo-box-item {
+    white-space: normal !important;
+    line-height: 1.5em !important;
+    height: auto !important;
+}
+
+/* ---------- Подписи и лейблы ---------- */
+.label {
+    color: #FFFFFF;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* ---------- Кнопки ---------- */
+.generate-button {
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    border: 2px solid #11998e;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.generate-button:hover {
+    transform: scale(1.05);
+}
+
+.clear-button {
+    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    border: 2px solid #feb47b;
+    color: #FFFFFF !important;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.clear-button:hover {
+    transform: scale(1.05);
+}
+
+.generate-button,
+.clear-button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    /* Добавим единый line-height, чтобы текст в кнопках встал на один baseline */
+    line-height: normal;
+    /* На всякий случай обнулим внешние отступы сверху/снизу */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* ---------- Ссылка для скачивания (зелёная) ---------- */
+.download-button {
+    display: inline-block;
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    color: #FFFFFF;
+    border: 2px solid #11998e;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+}
+.download-button:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- Уведомления ---------- */
+.custom-notification::part(content) {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 10px 20px !important;
+}
+.custom-notification[theme~="success"]::part(content) {
+    background-color: #4caf50 !important;
+    color: #FFFFFF !important;
+}
+.custom-notification[theme~="error"]::part(content) {
+    background-color: #e32636 !important;
+    color: #FFFFFF !important;
+}
+.custom-notification[theme~="warning"]::part(content) {
+    background-color: #FFA500 !important;
+    color: #FFFFFF !important;
+}
+
+/* ---------- Контейнер чекбоксов ---------- */
+.tests-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #FFFFFF30;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* ---------- Поля ввода ---------- */
+.vaadin-text-field::part(input-field),
+.vaadin-text-area::part(input-field) {
+    background-color: rgba(255,255,255,0.05) !important;
+    color: #ffffff !important;
+    border-radius: 4px;
+    border: 1px solid #FFFFFF30;
+    box-sizing: border-box;
+}
+.vaadin-text-field:hover::part(input-field),
+.vaadin-text-field:focus::part(input-field),
+.vaadin-text-area:hover::part(input-field),
+.vaadin-text-area:focus::part(input-field) {
+    border: 1px solid #10a37f !important;
+}
+
+/* ---------- Комбо бокс ---------- */
+.vaadin-combo-box,
+.vaadin-combo-box-overlay {
+    --lumo-base-color: transparent;
+    --lumo-contrast: #FFFFFF;
+    --lumo-primary-color: #10a37f;
+    --lumo-primary-text-color: #FFFFFF;
+}

@@ -1,0 +1,18 @@
+{
+  "id" : "e99416fd-faf1-4451-ac98-0c7b038a97ee",
+  "name" : "Test4",
+  "request" : {
+    "url" : "/some/testing",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "Hello, test3!",
+    "headers" : {
+      "Content-Type" : "text/plain"
+    }
+  },
+  "uuid" : "e99416fd-faf1-4451-ac98-0c7b038a97ee",
+  "persistent" : true,
+  "insertionIndex" : 2
+}

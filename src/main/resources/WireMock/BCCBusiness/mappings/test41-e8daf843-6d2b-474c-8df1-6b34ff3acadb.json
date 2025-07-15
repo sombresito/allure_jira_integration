@@ -1,0 +1,18 @@
+{
+  "id" : "e8daf843-6d2b-474c-8df1-6b34ff3acadb",
+  "name" : "Test41",
+  "request" : {
+    "url" : "/some/testing",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "Hello, test41!",
+    "headers" : {
+      "Content-Type" : "text/plain"
+    }
+  },
+  "uuid" : "e8daf843-6d2b-474c-8df1-6b34ff3acadb",
+  "persistent" : true,
+  "insertionIndex" : 1
+}

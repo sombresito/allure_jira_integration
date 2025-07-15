@@ -1,0 +1,89 @@
+repositories {
+    mavenCentral()
+}
+ext {
+    qaLibVersion = '1.2.0'
+    vaadinVersion = '23.1.3'
+    guavaVersion = '31.1-jre'
+    apacheIoVersion = '2.11.0'
+    openApiVersion = '1.6.9'
+    allureVersion = '2.18.1'
+}
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+dependencyManagement {
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:$vaadinVersion"
+    }
+}
+
+dependencies {
+    /* Allure Generator */
+    implementation "io.qameta.allure:allure-plugin-api:$allureVersion"
+    implementation "io.qameta.allure:allure-generator:$allureVersion"
+    /* QA lib */
+    implementation("ru.iopump.qa:qa-tools:$qaLibVersion") { transitive false }
+    /* Guava */
+    implementation "com.google.guava:guava:$guavaVersion"
+    /* Open API */
+    implementation "org.springdoc:springdoc-openapi-ui:$openApiVersion"
+    /* Spring Boot */
+    implementation('org.springframework.boot:spring-boot-starter-web') { exclude group: 'ch.qos.logback' }
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.hibernate:hibernate-validator:6.2.3.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    implementation 'org.jooq:joor:0.9.14'
+
+    implementation('com.vaadin:vaadin-spring-boot-starter') {
+
+        ["com.vaadin.webjar",
+         "org.webjars.bowergithub.insites",
+         "org.webjars.bowergithub.polymer",
+         "org.webjars.bowergithub.polymerelements",
+         "org.webjars.bowergithub.vaadin",
+         "org.webjars.bowergithub.webcomponents"].forEach { group -> exclude(group: group) }
+
+        ['vaadin-dev-server',
+         'vaadin-accordion-flow',
+         'vaadin-avatar-flow',
+         'vaadin-date-picker-flow',
+         'vaadin-date-time-picker-flow',
+         'vaadin-details-flow',
+         'vaadin-login-flow',
+         'vaadin-material-theme',
+         'vaadin-virtual-list-flow',
+         'vaadin-time-picker-flow',
+         'vaadin-split-layout-flow',
+         'vaadin-radio-button-flow',
+         'vaadin-list-box-flow',
+         'vaadin-iron-list-flow',
+         'vaadin-combo-box-flow',
+         'flow-polymer-template',
+         'flow-lit-template',
+         'flow-dnd',
+         'android-json'].forEach { module -> exclude(module: module) }
+    }
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    implementation "commons-io:commons-io:$apacheIoVersion"
+    /* Logging API*/
+    implementation 'org.slf4j:slf4j-api'
+    /* Logging IMPL*/
+    runtimeOnly 'ch.qos.logback:logback-classic'
+    runtimeOnly 'com.h2database:h2:1.4.200'
+    runtimeOnly 'org.postgresql:postgresql'
+    /* Testing */
+    testImplementation('junit:junit') { transitive = false }
+    testImplementation 'org.assertj:assertj-core'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage'
+        exclude group: 'org.junit.jupiter'
+        exclude group: 'ch.qos.logback'
+    }
+}

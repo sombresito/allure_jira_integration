@@ -1,0 +1,27 @@
+#version: '3.7'
+services:
+  allure-server:
+    build:
+      context: .
+      args:
+        RELEASE_VERSION: "5.0.3"
+        HTTP_PROXY: "http://proxy-ws.cbank.kz:8080"
+        HTTPS_PROXY: "http://proxy-ws.cbank.kz:8080"
+    image: evgeniyvs/allure-server:latest
+    container_name: allure-server
+    ports:
+      - "8080:8080"
+      - "9443:9443"
+    volumes:
+      - ./ext:/ext:rw
+      - ./allure-server-store:/allure:rw
+      - ./:/allure-app
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/allure-hub:/allure
+    networks:
+      - bridge
+    restart: unless-stopped
+networks:
+  bridge:
+    driver: bridge
+

@@ -1,0 +1,114 @@
+:root {
+    --lumo-font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --lumo-font-size: 1rem; /* Можно заменить на нужное значение */
+    --lumo-font-size-m: 1rem;
+    --lumo-line-height-m: 1.5;
+}
+
+html, :host {
+    font-family: var(--lumo-font-family);
+    font-size: var(--lumo-font-size, var(--lumo-font-size-m));
+    line-height: var(--lumo-line-height-m);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* styles.css */
+.client-form .vaadin-text-field,
+.client-form .vaadin-text-area,
+.client-form .vaadin-combo-box,
+.client-form .vaadin-upload {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.client-form .vaadin-horizontal-layout {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.client-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* Чекбокс */
+.checkbox {
+    --lumo-primary-text-color: #FFFFFF;
+    --lumo-contrast: #FFFFFF;
+    color: #FFFFFF;
+}
+.vaadin-checkbox:hover [part="checkbox"],
+.vaadin-checkbox:focus [part="checkbox"] {
+    border-color: #10a37f;
+}
+.vaadin-checkbox [part="checkbox"] {
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+}
+.vaadin-checkbox[checked] [part="checkbox"] {
+    background-color: #10a37f;
+    border-color: #10a37f;
+}
+.vaadin-checkbox[checked] [part="label"] {
+    color: #FFFFFF;
+}
+
+/* Комбобокс */
+.combobox {
+    --lumo-base-color: transparent;
+    --lumo-contrast: #FFFFFF;
+    --lumo-primary-color: #10a37f;
+    --lumo-primary-text-color: #FFFFFF;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+.vaadin-combo-box-overlay {
+    width: 400px !important;
+    max-height: 300px;
+}
+.vaadin-combo-box-item {
+    white-space: normal !important;
+    line-height: 1.5em !important;
+    height: auto !important;
+}
+
+
+.header-title {
+    color: #a9a9a9;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.7),
+        -1px -1px 1px rgba(255, 255, 255, 0.3),
+        0px 4px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.client-form .vaadin-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1em;
+}
+
+.client-form .vaadin-button:hover {
+    background-color: #0056b3;
+}
+
+.client-form .vaadin-checkbox {
+    margin-top: 10px;
+}
+
+vaadin-text-field:focus-within::part(label),
+vaadin-text-area:focus-within::part(label),
+vaadin-combo-box:focus-within::part(label),
+vaadin-checkbox-group:focus-within::part(label) {
+    color: white;
+}
+
+.custom-textarea textarea::placeholder {
+    padding-top: 10px;
+}

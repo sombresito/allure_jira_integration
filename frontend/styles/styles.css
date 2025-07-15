@@ -1,0 +1,454 @@
+.logo-text {
+    font-size: 24px; /* Размер текста */
+    color: #FDFEFE; /* Белый текст */
+    font-weight: bold;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.7),   /* Темная тень для глубины */
+        -1px -1px 1px rgba(255, 255, 255, 0.3), /* Светлая верхняя тень для стеклянного эффекта */
+        0px 4px 4px rgba(0, 0, 0, 0.3);  /* Дополнительная мягкая тень для объема */
+}
+
+html {
+  --lumo-primary-color: hsla(214, 96%, 96%, 0.9);
+}
+
+/* CSS для боковой панели */
+.v-app-layout-drawer {
+    background: #1E8449; /* Темно-зеленый фон */
+    box-shadow: 2px 0 8px rgba(0, 64, 0, 0.5); /* Объемная тень */
+    border-radius: 0 8px 8px 0; /* Закругление правой стороны */
+    color: #FFFFFF; /* Белый текст */
+    padding: 10px;
+}
+
+/* Стили для боковой панели */
+.menu-style {
+    background: #1E8449; /* Темно-зеленый фон */
+    color: #FFFFFF;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+
+    padding: 10px; /* Устанавливаем padding для внутреннего отступа */
+    width: 100%; /* Растягиваем контейнер на полную ширину */
+    box-sizing: border-box; /* Учитываем padding */
+    overflow: hidden; /* Предотвращаем переполнение */
+}
+
+.full-width-link {
+    color: #E0E0E0; /* Светло-серый цвет текста */
+    text-decoration: none;
+    padding: 8px 16px;
+    width: 100%;
+    display: block; /* Растягивает ссылку на всю ширину родителя */
+    white-space: nowrap; /* Запрещает перенос текста */
+    box-sizing: border-box;
+
+    /* Эффект объема текста */
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.8),     /* Темная тень для глубины */
+        -1px -1px 1px rgba(255, 255, 255, 0.2), /* Светлая тень для блеска */
+        2px 2px 5px rgba(0, 0, 0, 0.4);     /* Дополнительная мягкая внешняя тень */
+    font-weight: bold; /* Увеличивает вес текста для лучшего объема */
+}
+
+/* Стиль для активной ссылки */
+.full-width-link.router-link-active,
+.full-width-link:focus,
+.full-width-link:active {
+    color: #FFD700; /* Цвет текста для активной ссылки */
+    background-color: rgba(255, 255, 255, 0.15); /* Фон активной ссылки */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.full-width-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+}
+
+.search-field {
+    background-color: #A9A9A9 !important;
+    color: #000000 !important;
+    border-radius: 8px; /* Увеличиваем радиус для более округлых углов */
+    height: 36px; /* Высота, чтобы совпадала с кнопками */
+    padding: 0 1px; /* Больше отступов для удобства ввода */
+    font-size: 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Тень для объемного эффекта */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); /* Объем текста */
+
+}
+
+/* Настраиваем input-field внутри поля */
+.search-field::part(input-field) {
+    background-color: #A9A9A9 !important;
+    color: #000000 !important;
+    border-radius: 8px;
+    line-height: 36px;
+}
+
+/* Стили для текста-заполнителя */
+.search-field::part(input-field) ::placeholder {
+    color: #333333;
+    opacity: 1;
+}
+
+/* Убираем обводку при фокусе */
+.search-field:focus::part(input-field) {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Фон и текстовые стили для всей страницы background: linear-gradient(135deg, #1a1a1a, #595959, #d3d3d3);*/
+body {
+    background: linear-gradient(135deg, #707070, #e0e0e0);
+    color: #FFFFFF;
+}
+
+/* Применение фона для всей таблицы и её ячеек */
+vaadin-grid.custom-grid-background {
+    background-color: #CCCCCC !important;
+    color: #000000 !important;
+}
+
+vaadin-grid.custom-grid-background::part(cell) {
+    background-color: #CCCCCC !important;
+    color: #000000 !important;
+}
+
+.header {
+    background: #1E8449; /* Сочный изумрудный зелёный фон */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7), inset 0px 0px 8px rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 0;
+    position: relative;
+}
+
+.header::before {
+    /*content: "bcc hub";*/
+    position: absolute;
+    top: 50%; /* Вертикально центрирует текст */
+    left: 92%; /* Сдвигает текст немного вправо */
+    transform: translate(-50%, -50%); /* Центрирует текст и сдвигает его */
+    font-size: 32px;
+    color:#a9a9a9; /* Белый цвет текста */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Объемный эффект текста */
+}
+
+.logo-cr {
+
+    position: relative;
+    height: 60px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    border: none !important;
+    outline: none !important;
+}
+
+.logo-cr::after {
+    content: "bcc hub";
+    position: absolute;
+    bottom: 5px; /* Положение текста внутри элемента */
+    right: 5px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #FFFFFF; /* Грязно-белый цвет текста */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Создает стеклянный эффект */
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.5), /* Темная тень для объема */
+        -1px -1px 1px rgba(255, 255, 255, 0.2); /* Светлая тень для стеклянного блеска */
+}
+
+.custom-delete-button {
+    background: linear-gradient(to bottom, #ff5c5c, #d40000); /* Красный градиент */
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 12px; /* Менее выраженное скругление */
+    padding: 10px 20px;
+    border: 2px solid #b30000; /* Темный ободок */
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3), inset 0px 0px 8px rgba(255, 255, 255, 0.3); /* Внешняя и внутренняя тень */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); /* Объем текста */
+}
+
+.custom-delete-button:hover {
+    background: linear-gradient(to bottom, #ff6f6f, #c80000); /* Изменение градиента при наведении */
+}
+
+.custom-delete-button .vaadin-icon {
+    margin-right: 8px; /* Отступ для иконки */
+    width: 18px;
+    height: 18px;
+}
+
+.custom-upload-button {
+    background: linear-gradient(to bottom, #4da6ff, #005ce6); /* Синий градиент */
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 12px; /* Закругленные углы */
+    padding: 10px 25px;
+    border: 2px solid #004bb5; /* Темный ободок */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3), inset 0px 0px 8px rgba(255, 255, 255, 0.3); /* Внешняя и внутренняя тень */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); /* Объем текста */
+}
+
+.custom-upload-button:hover {
+    background: linear-gradient(to bottom, #66b3ff, #0073e6); /* Изменение градиента при наведении */
+}
+
+.custom-upload-button .vaadin-icon {
+    margin-right: 8px; /* Отступ для иконки */
+    width: 20px;
+    height: 20px;
+}
+
+.create-report-button {
+    background: linear-gradient(to bottom, #4CAF50, #3A9A3A); /* Зеленый градиент */
+    color: #ffffff; /* Белый текст */
+    font-weight: bold;
+    border-radius: 12px; /* Более округлые углы */
+    padding: 10px 25px;
+    font-size: 16px;
+    border: 1px solid #357A38; /* Темно-зеленая рамка */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Объемная тень */
+    transition: all 0.2s ease;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); /* Объем текста */
+}
+
+.create-report-button:hover {
+    background: linear-gradient(to bottom, #45A049, #357A38); /* Измененный градиент при наведении */
+}
+
+.create-report-button:active {
+    background: #357A38; /* Темный цвет при нажатии */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшенная тень при нажатии */
+    transform: translateY(2px); /* Эффект нажатия */
+}
+
+.create-report-button .vaadin-icon {
+    margin-right: 8px; /* Пространство между иконой и текстом */
+    font-size: 20px; /* Размер иконки */
+}
+
+.green-button {
+    background: linear-gradient(to bottom, #a8e063, #56ab2f); /* Градиент зелёного цвета */
+    color: white;
+    border: 1px solid #56ab2f; /* Тонкий зелёный контур */
+    padding: 10px 25px;
+    border-radius: 12px; /* Закруглённые края для овальной формы */
+    box-shadow: inset 0px -3px 5px rgba(0, 0, 0, 0.2), /* Внутренняя тень для объема */
+                0px 4px 6px rgba(0, 0, 0, 0.3); /* Внешняя тень для приподнятого эффекта */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.green-button:hover {
+    transform: scale(1.05);
+}
+
+.green-button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0px -1px 3px rgba(0, 0, 0, 0.3), /* Тень при нажатии */
+                0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-dialog-background::part(content) {
+    background: #CCCCCC; /* Градиентный фон */
+    padding: 20px;
+    border-radius: 8px; /* Опционально, для скругления углов */
+}
+
+.generate-button {
+    background: linear-gradient(to bottom, #38ef7d, #11998e); /* Зеленый градиент */
+    color: white;
+    border: 2px solid #11998e; /* Тонкая зелёная рамка */
+    padding: 12px 36px; /* Увеличенные отступы */
+    border-radius: 12px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3), 0px 4px 6px rgba(0, 0, 0, 0.15); /* Увеличенная тень */
+    font-size: 18px; /* Более крупный шрифт */
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Центрирует текст по горизонтали */
+}
+
+.generate-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4), 0px 6px 8px rgba(0, 0, 0, 0.2); /* Более глубокая тень при наведении */
+}
+
+.generate-button:active {
+    transform: scale(0.98);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2), 0px 2px 3px rgba(0, 0, 0, 0.1); /* Слегка уменьшенная тень при клике */
+}
+
+.cancel-button {
+    background: linear-gradient(to bottom, #ff5f5f, #d30000); /* Красный градиент */
+    color: white;
+    border: 2px solid #d30000; /* Красная рамка */
+    padding: 10px 30px; /* Размер кнопки */
+    border-radius: 12px; /* Закругленные края для овальной формы */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3), 0px 4px 6px rgba(0, 0, 0, 0.15); /* Объемная тень */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Центрирует текст */
+}
+
+.cancel-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4), 0px 6px 8px rgba(0, 0, 0, 0.2); /* Увеличенная тень при наведении */
+}
+
+.cancel-button:active {
+    transform: scale(0.98);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2), 0px 2px 3px rgba(0, 0, 0, 0.1); /* Слегка уменьшенная тень при нажатии */
+}
+
+vaadin-grid-cell-content a {
+    color: #0000B5; /* Тёмно-синий цвет */
+    text-decoration: none; /* Убирает подчеркивание, если нужно */
+}
+
+vaadin-grid-cell-content a:hover {
+    color: #000080; /* Немного другой оттенок тёмно-синего при наведении */
+    text-decoration: underline; /* Добавляет подчеркивание при наведении, если нужно */
+}
+
+.load-view {
+    margin: 0; /* Убирает внешние отступы для страницы */
+    padding: 0; /* Убирает внутренние отступы для страницы */
+    width: 100%; /* Устанавливает ширину страницы */
+    box-sizing: border-box; /* Учитывает отступы и границы внутри ширины */
+}
+
+.load-view .header {
+    margin: 0; /* Убирает внешние отступы */
+    padding: 0 20px; /* Добавляет только боковые отступы внутри хедера */
+    width: 100%; /* Растягивает хедер на всю ширину страницы */
+    background-color: #f5f5f5; /* Цвет фона */
+    border-bottom: 2px solid #ddd; /* Нижняя граница */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для хедера */
+}
+
+.load-view .header-title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.load-view .header-button {
+    margin-left: auto;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.load-view .header-button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+.avto-view {
+    margin: 0; /* Убирает внешние отступы для страницы */
+    padding: 0; /* Убирает внутренние отступы для страницы */
+    width: 100%; /* Устанавливает ширину страницы */
+    box-sizing: border-box; /* Учитывает отступы и границы внутри ширины */
+}
+
+.avto-view .header {
+    margin: 0; /* Убирает внешние отступы */
+    padding: 0 20px; /* Добавляет только боковые отступы внутри хедера */
+    width: 100%; /* Растягивает хедер на всю ширину страницы */
+    background-color: #f5f5f5; /* Цвет фона */
+    border-bottom: 2px solid #ddd; /* Нижняя граница */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для хедера */
+}
+
+.avto-view .header-title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.avto-view .header-button {
+    margin-left: auto;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.avto-view .header-button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* Кнопка в хедере (сверху справа) */
+.header-button {
+    margin-right: 20px; /* Отступ справа */
+    background: linear-gradient(to bottom, #007bff, #0056b3); /* Градиент фона */
+    color: #fff; /* Белый текст */
+    border: none;
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer;
+    font-size: 14px; /* Размер шрифта */
+    transition: all 0.3s ease; /* Плавный переход при наведении */
+    line-height: 45px; /* Центрируем текст внутри кнопки */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Тень для объема */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); /* Тень текста */
+}
+
+.header-button:hover {
+    background: linear-gradient(to bottom, #0056b3, #003d80); /* Градиент при наведении */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Усиленная тень при наведении */
+    transform: translateY(-2px); /* Приподнимаем кнопку */
+}
+
+.header-button:active {
+    background: linear-gradient(to bottom, #003d80, #0056b3); /* Градиент при нажатии */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Слабее тень при нажатии */
+    transform: translateY(2px); /* Опускаем кнопку */
+}
+
+/* ---------- Уведомления ---------- */
+.custom-notification::part(content) {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 10px 20px !important;
+}
+/* success - зелёный */
+.custom-notification[theme~="success"]::part(content) {
+    background-color: #4caf50 !important;
+    color: #FFFFFF !important;
+}
+/* error - красный */
+.custom-notification[theme~="error"]::part(content) {
+    background-color: #e32636 !important;
+    color: #FFFFFF !important;
+}
+/* warning - оранжевый */
+.custom-notification[theme~="warning"]::part(content) {
+    background-color: #FFA500 !important;
+    color: #FFFFFF !important;
+}

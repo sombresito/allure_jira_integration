@@ -1,0 +1,18 @@
+{
+  "id" : "90f360f2-095f-43f9-93c8-14c4f4db86da",
+  "name" : "Test2323",
+  "request" : {
+    "url" : "/some/testing",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "Hello, test2323!",
+    "headers" : {
+      "Content-Type" : "text/plain"
+    }
+  },
+  "uuid" : "90f360f2-095f-43f9-93c8-14c4f4db86da",
+  "persistent" : true,
+  "insertionIndex" : 8
+}

@@ -1,0 +1,164 @@
+
+.header-title {
+    color: #a9a9a9;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.7),
+        -1px -1px 1px rgba(255, 255, 255, 0.3),
+        0px 4px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.upload-component {
+    margin-top: 20px;
+    --lumo-base-color: transparent;
+    --lumo-contrast: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.upload-label {
+    color: #FFFFFF;
+}
+
+.vaadin-upload,
+.vaadin-checkbox,
+.vaadin-combo-box,
+.vaadin-button,
+.vaadin-text-field,
+.vaadin-text-area,
+.vaadin-label {
+    color: #FFFFFF;
+}
+
+/* Чекбокс */
+.checkbox {
+    --lumo-primary-text-color: #FFFFFF;
+    --lumo-contrast: #FFFFFF;
+    color: #FFFFFF;
+}
+.vaadin-checkbox:hover [part="checkbox"],
+.vaadin-checkbox:focus [part="checkbox"] {
+    border-color: #10a37f;
+}
+.vaadin-checkbox [part="checkbox"] {
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+}
+.vaadin-checkbox[checked] [part="checkbox"] {
+    background-color: #10a37f;
+    border-color: #10a37f;
+}
+.vaadin-checkbox[checked] [part="label"] {
+    color: #FFFFFF;
+}
+
+/* Комбобокс */
+.combobox {
+    --lumo-base-color: transparent;
+    --lumo-contrast: #FFFFFF;
+    --lumo-primary-color: #10a37f;
+    --lumo-primary-text-color: #FFFFFF;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+.vaadin-combo-box-overlay {
+    width: 400px !important;
+    max-height: 300px;
+}
+.vaadin-combo-box-item {
+    white-space: normal !important;
+    line-height: 1.5em !important;
+    height: auto !important;
+}
+
+.label {
+    color: #FFFFFF;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Кнопка "Создать JMX файл" (зелёная) */
+.generate-button {
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    border: 2px solid #11998e;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.generate-button:hover {
+    transform: scale(1.05);
+}
+
+/* Кнопка "Вернуться на страницу отчётов" - стилизуем как "Загрузить отчёт" (синий градиент) */
+.back-button {
+    background: linear-gradient(to bottom, #2196f3, #1e88e5); /* Синий градиент */
+    border: 1px solid #1e88e5;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.back-button:hover {
+    transform: scale(1.05);
+}
+
+/* Ссылка для скачивания JMX (зелёная) */
+.download-button {
+    display: inline-block;
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    color: #FFFFFF;
+    border: 2px solid #11998e;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+}
+.download-button:hover {
+    transform: scale(1.05);
+}
+
+/* Уведомления */
+/* Используем ::part(card) для стилизации внутренней части уведомления */
+.custom-notification::part(card) {
+    background-color: #4caf50 !important; /* По умолчанию зеленый фон */
+    color: #FFFFFF !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 10px 20px !important;
+}
+html, body {
+    background-image: linear-gradient(135deg, #707070, #e0e0e0);
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    height: 100%;
+    background-attachment: fixed;
+}
+
+/* Этот стиль убирает белый фон у #outlet элемента Vaadin */
+vaadin-app-layout::part(drawer) {
+    background-image: linear-gradient(135deg, #707070, #e0e0e0);
+}
+
+/* Удостоверьтесь, что элемент с основным контентом тоже прозрачный */
+vaadin-app-layout::part(content) {
+    background: transparent;
+}

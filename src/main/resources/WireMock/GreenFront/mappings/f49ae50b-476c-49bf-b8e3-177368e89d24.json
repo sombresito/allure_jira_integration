@@ -1,0 +1,18 @@
+{
+  "id" : "f49ae50b-476c-49bf-b8e3-177368e89d24",
+  "name" : "Грин Фронт",
+  "request" : {
+    "url" : "/some/testing",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "Hello, test3!",
+    "headers" : {
+      "Content-Type" : "text/plain"
+    }
+  },
+  "uuid" : "f49ae50b-476c-49bf-b8e3-177368e89d24",
+  "persistent" : true,
+  "insertionIndex" : 8
+}

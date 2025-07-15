@@ -1,0 +1,404 @@
+/* styles.css */
+.wire-form .vaadin-text-field
+.wire-form .vaadin-text-area,
+.wire-form .vaadin-combo-box,
+.wire-form .vaadin-upload {
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+.wire-form .vaadin-horizontal-layout {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.wire-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.div-form {
+    width: 50%;
+    height: 350px;
+    background-color: white;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    /*margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;*/
+}
+.set-form {
+    margin: 10px;
+    width: 50%;
+}
+/* Чекбокс */
+.checkbox {
+    --lumo-primary-text-color: #FFFFFF;
+    --lumo-contrast: #FFFFFF;
+    color: #FFFFFF;
+}
+.vaadin-checkbox:hover [part="checkbox"],
+.vaadin-checkbox:focus [part="checkbox"] {
+    border-color: #10a37f;
+}
+.vaadin-checkbox [part="checkbox"] {
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+}
+.vaadin-checkbox[checked] [part="checkbox"] {
+    background-color: #10a37f;
+    border-color: #10a37f;
+}
+.vaadin-checkbox[checked] [part="label"] {
+    color: #FFFFFF;
+}
+
+/* Комбобокс */
+.combobox {
+    --lumo-base-color: transparent;
+    --lumo-contrast: #FFFFFF;
+    --lumo-primary-color: #10a37f;
+    --lumo-primary-text-color: #FFFFFF;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+.vaadin-combo-box-overlay {
+    width: 400px !important;
+    max-height: 300px;
+}
+.vaadin-combo-box-item {
+    white-space: normal !important;
+    line-height: 1.5em !important;
+    height: auto !important;
+}
+
+
+.header-title {
+    color: #a9a9a9;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow:
+            1px 1px 2px rgba(0, 0, 0, 0.7),
+            -1px -1px 1px rgba(255, 255, 255, 0.3),
+            0px 4px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.wire-form .vaadin-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1em;
+}
+
+.wire-form .vaadin-button:hover {
+    background-color: #0056b3;
+}
+
+.wire-form .vaadin-checkbox {
+    margin-top: 10px;
+}
+
+.start-button,
+.clear-wire-button,
+.stop-button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    /* Добавим единый line-height, чтобы текст в кнопках встал на один baseline */
+    line-height: normal;
+    /* На всякий случай обнулим внешние отступы сверху/снизу */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.start-button {
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    border: 2px solid #11998e;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.clear-wire-button {
+    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    border: 2px solid #feb47b;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.stop-button {
+    background: red/*linear-gradient(to bottom, #e32636, #ff7e5f)*/;
+    border: 2px solid #ff7e5f;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.mock-error-notif {
+    font-size: 14px !important;
+    padding: 10px !important;
+    background-color: #e32636 !important;
+    color: #FFFFFF !important;
+    width: 200px !important;
+    height: 100px !important;
+}
+.mock-notif-successful {
+    font-size: 14px !important;
+    padding: 10px !important;
+    background-color: #38ef7d !important;
+    color: #FFFFFF !important;
+    width: 200px !important;
+    height: 100px !important;
+
+}
+
+.select-team-main {
+    background-color: #FFFFFF !important;
+    box-shadow: 0 5px 15px 0 rgba(190, 245, 116) !important;
+}
+.combobox-team {
+    background-color: #93C572 !important;
+    color: #006400 !important;
+}
+.select-button {
+    background-color: #93C572 !important;
+    color: #006400 !important;
+
+}
+.text-fields {
+    --lumo-contrast: #93C572;
+}
+/* Класс для наших TextField*/
+.custom-text-field-mock {
+    position: relative;
+}
+.custom-text-field-mock::part(input-field) {
+    background-color: #ccffcc;
+    color: #006400;
+    box-sizing: border-box; /* Чтобы фон не «выходил» за границы */
+}
+/* Позиционируем сообщение об ошибке абсолютно */
+.custom-text-field-mock::part(error-message) {
+    position: absolute;
+    bottom: -1.2em;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: #a00;
+    font-size: 0.9em;  /* Увеличили размер шрифта с 0.9em до 1.2em */
+    line-height: 0.9;  /* Можно задать line-height, чтобы текст выглядел аккуратно */
+    margin: 0;
+    padding: 0.2em 0;  /* Немного отступов сверху и снизу */
+}
+/* Для Vaadin-поля с классом .custom-text-field переопределяем стили автозаполнения */
+.custom-text-field input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #ccffcc inset !important;
+    -webkit-box-shadow: 0 0 0 1000px #ccffcc inset !important;
+    -webkit-text-fill-color: #006400 !important;
+}
+/* Стили для чекбоксов */
+.checkbox-mock::part(checkbox) {
+    background-color: #ccffcc;
+    color: #006400;
+    box-sizing: border-box; /* Чтобы фон не «выходил» за границы */
+}
+.checkbox-mock::part(checkbox)::after {
+    color: #808080;
+}
+.main-form {
+    background-color: white;
+    width: 400px;
+    height: auto;
+}
+    /* Стили для страницы создания моков */
+.mock-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.vertical-layuot {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 40% !important;
+    height: 80vh !important;
+    background-color: white !important;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5) !important;
+    /*background-color: #93C572 !important;*/
+}
+
+.create-mock-text-area {
+    background-color: white;
+    width: 100% !important;
+    height: 80vh !important;
+    font-size: 20px;
+    overflow-y: auto !important;
+}
+.create-mock-text-area::part(label) {
+    background-color: white;
+    color: #808080 !important;
+    font-size: 30px;
+}
+.create-mock-text-area[has-label] {
+    background-color: white !important;
+}
+.create-mock-text-area > label {
+    background-color: white !important;
+}
+.create-mock-text-area::part(placeholder) {
+    color: #FFFFFF;
+}
+.create-mock-text-area::part(input-field) {
+    background-color: #ccffcc;
+}
+/* стили для грида с заглушками */
+.grid-mocks {
+    margin-top: 0px;
+}
+/* В стилях для кнопки задаем форму трапеции */
+.trapezoid-button {
+    background-color: #696969;  /* Цвет фона кнопки */
+    color: white;               /* Цвет текста */
+    padding: 10px 20px;         /* Отступы */
+    margin-bottom: 0px;
+    border: none;               /* Без рамки */
+    font-size: 16px;            /* Размер шрифта */
+    cursor: pointer;           /* Курсор при наведении */
+
+    /* Применяем форму трапеции */
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+    transition: all 0.3s ease;  /* Плавное изменение */
+}
+.trapezoid-button:hover {
+    background-color: #45a049;  /* Изменение цвета при наведении */
+}
+/* Класс для кнопки в виде прямоугольника (после открытия грида) */
+.rectangular-button {
+    width: 100px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: white;
+    border: blue;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.v-icon {
+    font-size: 50px;  /* Устанавливаем размер иконки */
+    color: #696969;   /* Устанавливаем цвет иконки */
+}
+/* диалоговое окно */
+dialog-form::part(overlay) {
+    background-color: #ccffcc;
+}
+.select-button {
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    border: 2px solid #11998e;
+    color: #FFFFFF;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+/* Стили для окна просмотра заглушки */
+.view-mock-textarea::part(input-field) {
+    border: 2px solid #A9A9A9; /* Сплошная черная линия */
+    border-radius: 5px; /* Радиус скругления (если нужно) */
+    padding: 10px; /* Отступы внутри TextArea */
+    background-color: #ccffcc;
+}
+/* Стили для функционала удаления заглушек */
+.dlg-conf-del::part(content) {
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+}
+.hor-lay-conf-del {
+    display: flex;
+    justify-content: space-between; /* Центрируем по горизонтали */
+    padding-top: 20px;
+    width: 100%;
+}
+.del-mock-yes {
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    border: 2px solid #11998e;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    margin-left: 15%;
+    margin-right: 0;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.del-mock-no {
+    background: red;
+    border: 2px solid #11998e;
+    color: #FFFFFF;
+    padding: 12px 36px;
+    margin-right: 15%;
+    margin-left: 0;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Стили для страницы создания команд */
+.wire-form .cre-team {
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.main-div {
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hor-layout {
+    display: flex;
+    justify-content: center;  /* Центр по горизонтали */
+    /*align-items: center;*/      /* Центр по вертикали */
+    width: 100%;        /* занимает всю ширину родителя */
+    max-width: 100vw;   /* не превышает ширину экрана */
+
+}

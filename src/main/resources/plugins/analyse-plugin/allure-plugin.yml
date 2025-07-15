@@ -1,0 +1,7 @@
+id: analyse
+name: Analyse II
+description: Пользовательская вкладка с текстом «Анализ»
+jsFiles:
+  - index.js
+cssFiles:
+  - styles.css

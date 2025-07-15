@@ -1,0 +1,183 @@
+### Internal Spring Configuration
+#server:
+#  servlet:
+#    context-path: "/server"
+spring:
+  servlet:
+    multipart.max-file-size: 400MB
+    multipart.max-request-size: 400MB
+  datasource:
+    url: "jdbc:h2:file:./allure/db"
+    # H2 default username
+    username: sa
+    # H2 default password (empty)
+    password:
+  jpa:
+    database: H2
+    show-sql: false
+    hibernate.ddl-auto: update
+
+
+vaadin.url-mapping: "/ui/vn/*"
+
+#vaadin.url-mapping: "/ui/*"
+#server.port: ${PORT:8080}
+
+
+
+server:
+  port: 9443
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
+    key-alias: selfsigned
+
+### App Configuration
+springdoc.swagger-ui.path: /swagger-ui.html
+
+
+report_full:
+  idFull: "394-7a72-49e2-8a2a-3a93e5383770"
+  idPreprod: "14ba3235-1cb9-4854-b004-984685b0f1c8"
+  idTest: "8cad1314-02b1-463f-b8d4-a700dd4f61f3"
+  idDev: "5a30a2e0-b65a-4f4b-a030-1f0055b0f3f1"
+  idETE: "c93d6a7f-3fd7-4daf-a8f6-1cb8efa3ccbf"
+  idColvir: "ee06b333-0525-4575-96ef-0686cdb01bcd"
+
+
+
+
+allure:
+  resultsDir: allure/results/
+  reports:
+    dir: allure/reports/
+    path: reports/
+    history-level: 360
+  support-old-format: false
+  date-format: "dd/MM/yy HH:mm:ss"
+  clean:
+    dryRun: false            # Реальное удаление, а не симуляция
+    time: "19:25"            # Время выполнения задачи очистки
+    ageDays: 360              # Удалять отчеты старше 10 дней
+  #server-base-url:
+logging:
+  level:
+    root: INFO
+    org.atmosphere: WARN # Vaadin (GUI) Server
+    org.springframework: INFO
+    org.springframework.core: WARN
+    org.springframework.beans.factory.support: WARN
+    ru.iopump.qa:allure: INFO # Allure Server Logs
+    org.springframework.security.ldap.authentication: TRACE
+    org.springframework.security.ldap: DEBUG
+    org.springframework.security: DEBUG
+    com.ulisesbocchio.jasyptspringboot: DEBUG
+
+
+vaadin:
+  frontend:
+    frontend-folder: "./allure-server/frontend"
+
+### Security
+basic:
+  ldap:
+    host: "bcc-dc01.bank.corp.centercredit.kz"
+    port: 389
+    useSSL: false
+    startTLS: false
+    sslSkipVerify: false
+    searchBaseDNS: "ou=enabled_accounts,ou=users,ou=head_office,ou=almaty,ou=structural_units_of_the_bank,dc=bank,dc=corp,dc=centercredit,dc=kz"
+    memberOf: "memberOf"
+    username: "sAMAccountName"
+    email: "mail"
+  users:
+    - username: TUZ_BGT
+      password: QA$TUZ_BGT$
+      roles: "USER"
+      enable: true
+    - username: TUZ_CreditDebitCards
+      password: QATuz$CreditDebitCard$
+      roles: "USER"
+      enable: true
+    - username: TUZ_Transfers
+      password: TransfersQATuz$
+      roles: "USER"
+      enable: true
+    - username: TUZ_Payments
+      password: Pay$QA$Tuz$
+      roles: "USER"
+      enable: true
+    - username: TUZ_BCC_CORE
+      password: BCCCoreQATuz$
+      roles: "USER"
+      enable: true
+    - username: TUZ_BCCSmart_QA
+      password: BCCSmartQATuz$
+      roles: "USER"
+      enable: true
+    - username: TUZ_BCC_QA
+      password: BCCQATuz$
+      roles: "USER"
+      enable: true
+    - username: TUZ_MSB_Allure
+      password: MSBQAuzMush
+      roles: "USER"
+      enable: true
+    - username: TUZ_Centermarket
+      password: Tuz$QA#Center
+      roles: "USER"
+      enable: true
+    - username: TUZ_Saving
+      password: Tuz$QASavings
+      roles: "USER"
+      enable: true
+    - username: TUZ_GF
+      password: Tuz$QAGF
+      roles: "USER"
+      enable: true
+    - username: TUZ_Colvir
+      password: Tuz$QAColvir
+      roles: "USER"
+      enable: true
+    - username: hulk
+      password: hulkQA
+      roles: "ADMIN"
+      enable: true
+
+
+mail:
+  SMTP_HOST: "mail.bank.corp.centercredit.kz"
+  SMTP_PORT: 587
+  USERNAME: "TUZ_Allure"
+  PASSWORD: "m2Yp3?s{Fl4?~Z"
+  SENDER_EMAIL: "TUZ_Allure@bcc.kz"
+  RECIPIENT: "Yevgeniy.Vikhrenko@bcc.kz,bolat.abdikadyr@bcc.kz,eldar.sharapiev@bcchub.kz,sergei.krasikov@bcc.kz"
+  DOMAIN: "BANK"
+  NTLM: "NTLM"
+  encr: "MySecretPassword$317$"
+
+
+jasypt:
+  encryptor:
+    password: "MySecretKey123"
+    algorithm: "PBEWithMD5AndDES"
+
+
+base:
+  yes_bd: jdbc:oracle:thin:@10.15.23.155:1521:CBS3yes
+  tp_bd: jdbc:oracle:thin:@10.15.23.51:1521:CBS3tp
+  bt_bd: jdbc:oracle:thin:@10.15.123.74:1521:CBS3bt
+  test_bd: jdbc:oracle:thin:@10.15.23.211:1521:CBS3test
+
+
+azure:
+  tenant-id: "7f7b9357-9c44-4410-95df-2c59b7c1872b"
+  client-secret: "b~S8Q~h8NM1LS3zBQI2zqLV7qLP-SJQOQoR~Vbdd"
+  client-id: "74cddf29-2d8e-44d5-b207-efa52b00e73f"
+  default-users:
+    - sergey.krasikov@bcchub.kz
+    - bolat.abdikadyr@bcchub.kz
+    - Eldar.Sharapiev@bcchub.kz
+
