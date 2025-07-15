@@ -304,6 +304,7 @@ public class JpaReportService {
             final List<Path> resultDirsToGenerate = historyO
                     .map(history -> (List<Path>) ImmutableList.<Path>builder().addAll(resultDirs).add(history).build())
                     .orElse(resultDirs);
+            copyAllureProperties(resultDirsToGenerate);
             // Создать новый отчет с историей
             reportGenerator.generate(destination, resultDirsToGenerate);
             log.info("Report '{}' generated according to results '{}'", destination, resultDirsToGenerate);
@@ -1205,6 +1206,21 @@ public class JpaReportService {
             }
         } catch (Exception e) {
             System.err.println("Error updating summary report: " + e.getMessage());
+        }
+    }
+
+    private void copyAllureProperties(Collection<Path> dirs) {
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("allure.properties")) {
+            if (is == null) {
+                log.warn("allure.properties resource not found");
+                return;
+            }
+            byte[] data = is.readAllBytes();
+            for (Path dir : dirs) {
+                Files.write(dir.resolve("allure.properties"), data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            }
+        } catch (IOException e) {
+            log.warn("Failed to copy allure.properties", e);
         }
     }
 
