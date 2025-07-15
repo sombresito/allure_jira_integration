@@ -63,6 +63,7 @@ public final class AllureReportGenerator {
     private static Configuration configuration() {
         return new ConfigurationBuilder()
             .fromPlugins(loadPlugins())
+            .fromProperties("allure.properties")
             .fromExtensions(
                 Arrays.asList(
                     new JacksonContext(),
