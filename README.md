@@ -167,12 +167,13 @@ allure.date-format           | string                   | yy/MM/dd HH:mm:ss     
 allure.server-base-url       | string                   |                          | Define custom base url for results. If your server behind the proxy or other troubles to get server external hostname. Don't forget about '/' at the end
 basic.auth.enable            | boolean                  | false                    | Enable Basic Authentication
 basic.auth.username          | string                   | admin                    | Username for basic auth
-basic.auth.password          | string                   | admin                    | Password for basic auth
+basic.auth.password          | string                   | ${BASIC_USER_PASSWORD}                    | Password for basic auth
 allure.clean.dryRun          | boolean                  | false                    | Don't delete but print logs. For testing
 allure.clean.time            | LocalTime "HH[:mm][:ss]" | 00:00                    | Time to check reports age/ Scheduler start once per day
 allure.clean.ageDays         | int                      | 90                       | Max age for all reports. But exclude specified paths in 'allure.clean.paths'
 allure.clean.paths[].path    | String                   | manual_uploaded          | Report path
 allure.clean.paths[].ageDays | int                      | 30                       | Max age for reports with this path
+Passwords and API tokens should be provided through environment variables or a secure secrets store.
 
 > Every spring boot setting can be passed through ENV variables with a little changes according to [spring boot cfg docs](https://docs.spring.io/spring-boot/docs/1.5.5.RELEASE/reference/html/boot-features-external-config.html)
 > For example: `allure.report.host` transform to `ALLURE_REPORT_HOST`
@@ -240,4 +241,17 @@ Or switch all logs to `DEBUG`:
 ```
     export LOGGING_LEVEL_ROOT=DEBUG
 ```
+
+### Jira configuration
+
+Provide Jira connection parameters via environment variables or your secrets store. Required variables:
+
+```
+export JIRA_API_URL=https://jira.example.com
+export JIRA_API_TOKEN=yourToken
+export JIRA_PROJECT_KEY=QA
+export JIRA_ISSUE_TYPE_ID=10002
+```
+
+Other optional variables like `JIRA_DEFAULT_ASSIGNEE` or `JIRA_EPIC_CODE` can also be supplied the same way.
 

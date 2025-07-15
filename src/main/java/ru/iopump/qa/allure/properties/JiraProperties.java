@@ -11,40 +11,40 @@ public class JiraProperties {
     /**
      * URL API Jira
      */
-    private String apiUrl = "https://jira.bcc.kz";
+    private String apiUrl;
 
     /**
      * Токен авторизации для API Jira
      */
-    private String apiToken = "NTY1MTUxMjg3NjM4Oh2s8v4+gO1eqiyLXhDOv9qhdzO3";
+    private String apiToken;
 
     /**
      * Ключ проекта в Jira
      */
-    private String projectKey = "QA";
+    private String projectKey;
 
     /**
      * ID типа задачи в Jira
      */
-    private String issueTypeId = "10002";
+    private String issueTypeId;
 
     /**
      * Имя пользователя, который будет назначен исполнителем по умолчанию
      */
-    private String defaultAssignee = "KRASIKOS";
+    private String defaultAssignee;
 
     /**
      * Имя пользователя, который будет указан как автор задачи по умолчанию
      */
-    private String defaultReporter = "HUBSHARAPIEL";
+    private String defaultReporter;
 
     /**
      * Ключ системы влияния (customfield_11203)
      */
-    private String influenceSystemKey = "IAS-50909";
+    private String influenceSystemKey;
 
     /**
      * Код компании (customfield_10100)
      */
-    private String epicCode = "IC-3906";
+    private String epicCode;
 }
