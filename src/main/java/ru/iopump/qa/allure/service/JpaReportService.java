@@ -43,6 +43,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.StreamSupport;
@@ -158,6 +159,7 @@ public class JpaReportService {
                                      String baseUrl) {
         // Новое место назначения и сущность отчета
         final Path destination = reportUnzipService.unzipAndStore(archiveInputStream);
+        copyAllureProperties(Collections.singleton(destination));
         final UUID uuid = UUID.fromString(destination.getFileName().toString());
         Preconditions.checkArgument(
                 Files.list(destination).anyMatch(path -> path.endsWith("index.html")),
