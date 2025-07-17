@@ -267,3 +267,4 @@ allure.link.issue.pattern=https://jira.example.com/browse/{}
 Without this setting the `@Issue` annotation will create links relative to the
 report location instead of your Jira server.
 
+
