@@ -255,3 +255,15 @@ export JIRA_ISSUE_TYPE_ID=10002
 
 Other optional variables like `JIRA_DEFAULT_ASSIGNEE` or `JIRA_EPIC_CODE` can also be supplied the same way.
 
+#### Issue link URL
+
+Use the `allure.link.issue.pattern` property to define the Jira base URL for
+`@Issue` links generated in the report. For example:
+
+```properties
+allure.link.issue.pattern=https://jira.example.com/browse/{}
+```
+
+Without this setting the `@Issue` annotation will create links relative to the
+report location instead of your Jira server.
+
