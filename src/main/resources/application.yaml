@@ -30,12 +30,22 @@ server:
   ssl:
     enabled: true
     key-store: classpath:keystore.p12
-    key-store-password: changeit
+    key-store-password: ${SSL_KEY_STORE_PASSWORD:changeit}
     key-store-type: PKCS12
     key-alias: selfsigned
 
 ### App Configuration
 springdoc.swagger-ui.path: /swagger-ui.html
+
+jira:
+  apiUrl: ${JIRA_API_URL:https://jira.bcc.kz}
+  apiToken: ${JIRA_API_TOKEN}
+  projectKey: ${JIRA_PROJECT_KEY:QA}
+  issueTypeId: ${JIRA_ISSUE_TYPE_ID:10002}
+  defaultAssignee: ${JIRA_DEFAULT_ASSIGNEE:KRASIKOS}
+  defaultReporter: ${JIRA_DEFAULT_REPORTER:HUBSHARAPIEL}
+  influenceSystemKey: ${JIRA_INFLUENCE_SYSTEM_KEY:IAS-50909}
+  epicCode: ${JIRA_EPIC_CODE:IC-3906}
 
 
 report_full:
@@ -94,55 +104,55 @@ basic:
     email: "mail"
   users:
     - username: TUZ_BGT
-      password: QA$TUZ_BGT$
+      password: ${TUZ_BGT_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_CreditDebitCards
-      password: QATuz$CreditDebitCard$
+      password: ${TUZ_CREDITDEBITCARDS_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_Transfers
-      password: TransfersQATuz$
+      password: ${TUZ_TRANSFERS_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_Payments
-      password: Pay$QA$Tuz$
+      password: ${TUZ_PAYMENTS_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_BCC_CORE
-      password: BCCCoreQATuz$
+      password: ${TUZ_BCC_CORE_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_BCCSmart_QA
-      password: BCCSmartQATuz$
+      password: ${TUZ_BCCSMART_QA_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_BCC_QA
-      password: BCCQATuz$
+      password: ${TUZ_BCC_QA_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_MSB_Allure
-      password: MSBQAuzMush
+      password: ${TUZ_MSB_ALLURE_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_Centermarket
-      password: Tuz$QA#Center
+      password: ${TUZ_CENTERMARKET_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_Saving
-      password: Tuz$QASavings
+      password: ${TUZ_SAVING_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_GF
-      password: Tuz$QAGF
+      password: ${TUZ_GF_PASSWORD}
       roles: "USER"
       enable: true
     - username: TUZ_Colvir
-      password: Tuz$QAColvir
+      password: ${TUZ_COLVIR_PASSWORD}
       roles: "USER"
       enable: true
     - username: hulk
-      password: hulkQA
+      password: ${HULK_PASSWORD}
       roles: "ADMIN"
       enable: true
 
@@ -151,17 +161,17 @@ mail:
   SMTP_HOST: "mail.bank.corp.centercredit.kz"
   SMTP_PORT: 587
   USERNAME: "TUZ_Allure"
-  PASSWORD: "m2Yp3?s{Fl4?~Z"
+  PASSWORD: ${MAIL_PASSWORD}
   SENDER_EMAIL: "TUZ_Allure@bcc.kz"
   RECIPIENT: "Yevgeniy.Vikhrenko@bcc.kz,bolat.abdikadyr@bcc.kz,eldar.sharapiev@bcchub.kz,sergei.krasikov@bcc.kz"
   DOMAIN: "BANK"
   NTLM: "NTLM"
-  encr: "MySecretPassword$317$"
+  encr: ${MAIL_ENCRYPTION_PASSWORD}
 
 
 jasypt:
   encryptor:
-    password: "MySecretKey123"
+    password: ${JASYPT_ENCRYPTOR_PASSWORD}
     algorithm: "PBEWithMD5AndDES"
 
 
@@ -174,7 +184,7 @@ base:
 
 azure:
   tenant-id: "7f7b9357-9c44-4410-95df-2c59b7c1872b"
-  client-secret: "b~S8Q~h8NM1LS3zBQI2zqLV7qLP-SJQOQoR~Vbdd"
+  client-secret: ${AZURE_CLIENT_SECRET}
   client-id: "74cddf29-2d8e-44d5-b207-efa52b00e73f"
   default-users:
     - sergey.krasikov@bcchub.kz
