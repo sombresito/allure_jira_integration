@@ -20,5 +20,6 @@ public class GenerateDto {
     String path;
     @Size(min = 1, max = 120)
     String build;
+    String jiraIssueKey;
     boolean deleteResults;
 }

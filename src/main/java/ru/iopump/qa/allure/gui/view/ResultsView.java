@@ -114,7 +114,7 @@ public class ResultsView extends VerticalLayout {
         generateDialog.addOpenedChangeListener(event -> {
             StreamUtil.stream(results.getGrid().getSelectedItems()).findFirst()
                     .ifPresentOrElse(resultResponse -> generateDialog.getPayload().getBinder()
-                                    .setBean(new GenerateDto(resultResponse.getUuid(), null, null, false)),
+                                    .setBean(new GenerateDto(resultResponse.getUuid(), null, null, null, false)),
                             () -> generateDialog.getPayload().getBinder().setBean(new GenerateDto())
                     );
         });
