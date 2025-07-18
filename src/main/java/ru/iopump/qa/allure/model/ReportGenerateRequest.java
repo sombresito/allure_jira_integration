@@ -30,6 +30,7 @@ public class ReportGenerateRequest {
      * Delete result after generation.
      */
     boolean deleteResults = true;
+    String jiraIssueKey;
 
     @JsonIgnore
     public List<Path> getResultsAsPath(@NonNull Path baseResultDir) {
