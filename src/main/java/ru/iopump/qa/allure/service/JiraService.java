@@ -6,6 +6,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ru.iopump.qa.allure.model.jira.JiraModels.JiraIssueRequest;
@@ -53,6 +56,46 @@ public class JiraService {
 
         log.info("Задача успешно создана в Jira: {}", response.getBody());
         return Objects.requireNonNull(response.getBody()).getKey();
+    }
+
+    /**
+     * Добавить комментарий к задаче Jira.
+     *
+     * @param issueKey Ключ задачи
+     * @param body     Текст комментария
+     */
+    public void addComment(String issueKey, String body) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/json");
+        headers.set("Authorization", "Bearer " + jiraProperties.getApiToken());
+
+        var url = jiraProperties.getApiUrl() + "/rest/api/2/issue/" + issueKey + "/comment";
+        var request = new HttpEntity<>(Map.of("body", body), headers);
+
+        log.info("Отправка комментария в Jira для задачи {}", issueKey);
+        restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+    }
+
+    /**
+     * Сформировать комментарий с информацией о репорте и добавить его в задачу.
+     *
+     * @param issueKey  Ключ задачи
+     * @param reportDir Директория отчета Allure
+     * @param reportUrl URL отчета
+     */
+    public void addReportComment(String issueKey, Path reportDir, String reportUrl) {
+        Path summaryPath = reportDir.resolve("widgets/summary.json");
+        try {
+            if (Files.notExists(summaryPath)) {
+                log.warn("Summary file '{}' not found", summaryPath);
+                return;
+            }
+            String summary = Files.readString(summaryPath);
+            String comment = String.format("Allure report: %s\n\n{code:json}\n%s\n{code}", reportUrl, summary);
+            addComment(issueKey, comment);
+        } catch (IOException e) {
+            log.error("Не удалось добавить комментарий в Jira", e);
+        }
     }
 
 
