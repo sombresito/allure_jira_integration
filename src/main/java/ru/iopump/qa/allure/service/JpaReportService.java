@@ -1212,19 +1212,41 @@ public class JpaReportService {
     }
 
     private void copyAllureProperties(Collection<Path> dirs) {
-        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("allure.properties")) {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("allure.properties")) {
             if (is == null) {
-                log.warn("allure.properties resource not found");
+                log.warn("❌ allure.properties not found in classpath (resources)");
                 return;
             }
+
             byte[] data = is.readAllBytes();
+
             for (Path dir : dirs) {
-                Files.write(dir.resolve("allure.properties"), data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                Path target = dir.resolve("allure.properties");
+                try {
+                    Files.createDirectories(dir); // гарантия, что директория существует
+                    Files.write(target, data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+
+                    // 🔍 Проверка, что файл существует и содержит нужный шаблон
+                    if (Files.exists(target)) {
+                        String content = Files.readString(target);
+                        if (content.contains("allure.link.issue.pattern")) {
+                            log.info("✅ allure.properties скопирован и содержит issue.pattern в {}", target);
+                        } else {
+                            log.warn("⚠️ allure.properties скопирован в {}, но без issue.pattern", target);
+                        }
+                    } else {
+                        log.warn("⚠️ Не удалось найти скопированный файл allure.properties в {}", target);
+                    }
+
+                } catch (IOException e) {
+                    log.warn("❌ Ошибка при копировании allure.properties в {}", target, e);
+                }
             }
         } catch (IOException e) {
-            log.warn("Failed to copy allure.properties", e);
+            log.warn("❌ Не удалось прочитать allure.properties из classpath", e);
         }
     }
+
 
 
 }
