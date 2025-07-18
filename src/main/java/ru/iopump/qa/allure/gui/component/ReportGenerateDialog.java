@@ -138,6 +138,8 @@ public class ReportGenerateDialog extends Dialog {
         private final TextField path = new TextField("Report path");
         @PropertyId("build")
         private final TextField build = new TextField("Pipeline");
+        @PropertyId("jiraIssueKey")
+        private final TextField jiraIssueKey = new TextField("Jira Issue Key");
         @PropertyId("deleteResults")
         private final Checkbox deleteResults = new Checkbox("Delete on success");
         @Getter
@@ -154,6 +156,7 @@ public class ReportGenerateDialog extends Dialog {
             var info = new ExecutorInfo();
             request.setResults(Collections.singletonList(generateDto.getResultUuid()));
             request.setDeleteResults(generateDto.isDeleteResults());
+            request.setJiraIssueKey(generateDto.getJiraIssueKey());
 
             spec.setPath(new String[]{generateDto.getPath()});
             spec.setExecutorInfo(info.setBuildName(generateDto.getBuild()));
@@ -175,7 +178,7 @@ public class ReportGenerateDialog extends Dialog {
         }
 
         private void visitForm(final FormLayout form) {
-            form.add(resultUuid, path, build, deleteResults);
+            form.add(resultUuid, path, build, jiraIssueKey, deleteResults);
         }
 
         @Override
