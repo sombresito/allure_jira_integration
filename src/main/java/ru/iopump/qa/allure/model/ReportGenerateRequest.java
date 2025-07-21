@@ -31,6 +31,7 @@ public class ReportGenerateRequest {
      */
     boolean deleteResults = true;
     String jiraIssueKey;
+    String logsUrl;
 
     @JsonIgnore
     public List<Path> getResultsAsPath(@NonNull Path baseResultDir) {

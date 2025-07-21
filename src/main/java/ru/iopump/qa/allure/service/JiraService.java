@@ -90,7 +90,7 @@ public class JiraService {
      * @param reportDir Директория отчета Allure
      * @param reportUrl URL отчета
      */
-    public void addReportComment(String issueKey, Path reportDir, String reportUrl) {
+    public void addReportComment(String issueKey, Path reportDir, String reportUrl, String logsUrl) {
         Path summaryPath = reportDir.resolve("widgets/summary.json");
         try {
             if (Files.notExists(summaryPath)) {
@@ -99,7 +99,12 @@ public class JiraService {
             }
             String summary = Files.readString(summaryPath);
             log.debug("Готовим комментарий для {} с отчётом {}", issueKey, reportUrl);
-            String comment = String.format("Allure report: %s\n\n{code:json}\n%s\n{code}", reportUrl, summary);
+            String comment;
+            if (logsUrl != null && !logsUrl.isBlank()) {
+                comment = String.format("Allure report: %s\nLogs: %s\n\n{code:json}\n%s\n{code}", reportUrl, logsUrl, summary);
+            } else {
+                comment = String.format("Allure report: %s\n\n{code:json}\n%s\n{code}", reportUrl, summary);
+            }
             addComment(issueKey, comment);
         } catch (IOException e) {
             log.error("Не удалось добавить комментарий в Jira", e);
