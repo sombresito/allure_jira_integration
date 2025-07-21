@@ -72,8 +72,15 @@ public class JiraService {
         var url = jiraProperties.getApiUrl() + "/rest/api/2/issue/" + issueKey + "/comment";
         var request = new HttpEntity<>(Map.of("body", body), headers);
 
-        log.info("Отправка комментария в Jira для задачи {}", issueKey);
-        restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+        var browseUrl = jiraProperties.getApiUrl() + "/browse/" + issueKey;
+        log.info("Отправка комментария в Jira для задачи {} ({}). Тело: {}", issueKey, browseUrl, body);
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+            log.info("Ответ Jira: status='{}' body='{}'", response.getStatusCode(), response.getBody());
+        } catch (Exception e) {
+            log.error("Ошибка при отправке комментария в Jira", e);
+            throw e;
+        }
     }
 
     /**
@@ -91,6 +98,7 @@ public class JiraService {
                 return;
             }
             String summary = Files.readString(summaryPath);
+            log.debug("Готовим комментарий для {} с отчётом {}", issueKey, reportUrl);
             String comment = String.format("Allure report: %s\n\n{code:json}\n%s\n{code}", reportUrl, summary);
             addComment(issueKey, comment);
         } catch (IOException e) {
