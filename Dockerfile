@@ -37,7 +37,9 @@ ENV SPRING_PROFILES_ACTIVE=${PROFILE:-default}
 
 ENTRYPOINT sh -c 'java \
   -Dloader.path=/ext \
-  -cp allure-server-docker.jar \
   -Dspring.profiles.active=${PROFILE:-default} \
+  -Dlogging.level.ru.iopump.qa.allure.service.JiraService=DEBUG \
+  -cp allure-server-docker.jar \
   org.springframework.boot.loader.PropertiesLauncher'
+
 

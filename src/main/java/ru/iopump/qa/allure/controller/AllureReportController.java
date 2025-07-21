@@ -119,10 +119,14 @@ public class AllureReportController {
         );
 
         String jiraIssueKey = reportGenerateRequest.getJiraIssueKey();
-        if (StringUtils.isNotBlank(jiraIssueKey)) {
+        log.info("Создан ключ jira issue: {}", jiraIssueKey);
+        if (StringUtils.isBlank(jiraIssueKey)) {
+            log.info("В запросе не передан jiraIssueKey — пропускаем добавление комментария");
+        } else {
             Path reportDir = reportService.getReportDirectory(reportEntity.getUuid());
             String reportUrl = reportEntity.generateUrl(baseUrl(), allureProperties.reports().dir());
-            jiraService.addReportComment(jiraIssueKey, reportDir, reportUrl, reportGenerateRequest.getLogsUrl());
+            log.debug("Будем добавлять комментарий в Jira, ключ = '{}', папка = {}", jiraIssueKey, reportDir);
+            jiraService.addReportComment(jiraIssueKey, reportDir, reportUrl);
         }
 
         return new ReportResponse(

@@ -8,6 +8,9 @@ services:
         HTTP_PROXY: "http://proxy-ws.cbank.kz:8080"
         HTTPS_PROXY: "http://proxy-ws.cbank.kz:8080"
     image: evgeniyvs/allure-server:latest
+    command: >
+      java -jar /app/allure-server.jar
+      --logging.level.ru.iopump.qa.allure=DEBUG
     container_name: allure-server
     ports:
       - "8080:8080"

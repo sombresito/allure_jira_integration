@@ -79,7 +79,7 @@ logging:
     org.springframework: INFO
     org.springframework.core: WARN
     org.springframework.beans.factory.support: WARN
-    ru.iopump.qa:allure: INFO # Allure Server Logs
+    ru.iopump.qa:allure: DEBUG # Allure Server Logs
     org.springframework.security.ldap.authentication: TRACE
     org.springframework.security.ldap: DEBUG
     org.springframework.security: DEBUG
