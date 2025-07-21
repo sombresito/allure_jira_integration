@@ -6,6 +6,7 @@
 /allure
 corp-proxy-ca.crt
 .vscode/
+.env
 
 # Node
 /node
