@@ -122,7 +122,7 @@ public class AllureReportController {
         if (StringUtils.isNotBlank(jiraIssueKey)) {
             Path reportDir = reportService.getReportDirectory(reportEntity.getUuid());
             String reportUrl = reportEntity.generateUrl(baseUrl(), allureProperties.reports().dir());
-            jiraService.addReportComment(jiraIssueKey, reportDir, reportUrl);
+            jiraService.addReportComment(jiraIssueKey, reportDir, reportUrl, reportGenerateRequest.getLogsUrl());
         }
 
         return new ReportResponse(

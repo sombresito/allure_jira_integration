@@ -21,5 +21,6 @@ public class GenerateDto {
     @Size(min = 1, max = 120)
     String build;
     String jiraIssueKey;
+    String logsUrl;
     boolean deleteResults;
 }
