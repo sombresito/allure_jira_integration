@@ -169,9 +169,9 @@ public class JiraService {
         extractIssueKey(reportDir).ifPresent(issue -> {
             try {
                 postComment(issue, reportUrl);
-                log.info("Report link '{}' sent to Jira issue {}", reportUrl, issue);
+                log.info("Ссылка на отчёт '{}' отправлена в задачу Jira {}", reportUrl, issue);
             } catch (Exception e) {
-                log.warn("Failed to send report link to Jira issue {}", issue, e);
+                log.warn("Не удалось отправить ссылку на отчёт в задачу Jira {}", issue, e);
             }
         });
     }
@@ -183,13 +183,14 @@ public class JiraService {
         }
         try {
             String content = Files.readString(index);
-            Pattern p = Pattern.compile("https?://[^\"']*jira[^\"']*/browse/([A-Z]+-\\d+)");
+//            Pattern p = Pattern.compile("https?://[^\"']*jira[^\"']*/browse/([A-Z]+-\\d+)");
+            Pattern p = Pattern.compile("https?://[^\"']*/browse/([A-Z]+-\\d+)");
             Matcher m = p.matcher(content);
             if (m.find()) {
                 return Optional.ofNullable(m.group(1));
             }
         } catch (Exception e) {
-            log.warn("Cannot extract Jira issue from {}", index, e);
+            log.warn("Не удалось извлечь задачу Jira из {}", index, e);
         }
         return Optional.empty();
     }

@@ -17,11 +17,28 @@ plugins {
     id "com.github.node-gradle.node" version "7.0.2"
 }
 
+// Собираем “fat-jar” с именем allure-server-docker.jar
+bootJar {
+    archiveBaseName.set('allure-server-docker')
+    archiveVersion.set('')    // чтобы не было суффикса -<version>.jar
+    // если нужно явно указать Main-класс:
+    manifest {
+        attributes(
+                "Start-Class": "ru.iopump.qa.allure.Application"
+        )
+    }
+}
+
+springBoot {
+    mainClass = "ru.iopump.qa.allure.Application"
+}
+
 apply from: './gradle/dependencies.gradle'
 apply from: './gradle/checking.gradle'
 apply from: './gradle/testing.gradle'
 
 dependencies {
+    implementation "io.qameta.allure:allure-generator:2.20.1"
     implementation group: 'com.vaadin', name: 'vaadin', version: '23.1.3'
     implementation 'org.springframework.ldap:spring-ldap-core:2.3.4.RELEASE'
     implementation 'org.springframework.security:spring-security-ldap:5.7.2'
@@ -95,8 +112,7 @@ tasks.register('frontendBuild', com.github.gradle.node.npm.task.NpmTask) {
     dependsOn tasks.named('npmInstall')
     workingDir = file("${projectDir}/allure-frontend")
     // ? ????  ../src/main/resources/static
-    args = ['run', 'build', '--', '--outDir',
-            '../src/main/resources/static/ui/']  // <-- ???????? /react
+    args = ['run', 'build']
 }
 
 processResources.dependsOn 'frontendBuild'
