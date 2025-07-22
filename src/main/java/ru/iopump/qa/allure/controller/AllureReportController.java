@@ -126,7 +126,12 @@ public class AllureReportController {
             Path reportDir = reportService.getReportDirectory(reportEntity.getUuid());
             String reportUrl = reportEntity.generateUrl(baseUrl(), allureProperties.reports().dir());
             log.debug("Будем добавлять комментарий в Jira, ключ = '{}', папка = {}", jiraIssueKey, reportDir);
-            jiraService.addReportComment(jiraIssueKey, reportDir, reportUrl);
+            jiraService.addReportComment(
+                    jiraIssueKey,
+                    reportDir,
+                    reportUrl,
+                    reportGenerateRequest.getLogsUrl()
+            );
         }
 
         return new ReportResponse(
