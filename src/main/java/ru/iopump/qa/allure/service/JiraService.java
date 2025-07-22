@@ -21,8 +21,13 @@ import ru.iopump.qa.allure.properties.JiraProperties;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 @Slf4j
 @Service
@@ -158,5 +163,44 @@ public class JiraService {
                         ))
                         .build())
                 .build();
+    }
+
+    public void addReportLinkComment(Path reportDir, String reportUrl) {
+        extractIssueKey(reportDir).ifPresent(issue -> {
+            try {
+                postComment(issue, reportUrl);
+                log.info("Report link '{}' sent to Jira issue {}", reportUrl, issue);
+            } catch (Exception e) {
+                log.warn("Failed to send report link to Jira issue {}", issue, e);
+            }
+        });
+    }
+
+    private Optional<String> extractIssueKey(Path reportDir) {
+        Path index = reportDir.resolve("index.html");
+        if (!Files.exists(index)) {
+            return Optional.empty();
+        }
+        try {
+            String content = Files.readString(index);
+            Pattern p = Pattern.compile("https?://[^\"']*jira[^\"']*/browse/([A-Z]+-\\d+)");
+            Matcher m = p.matcher(content);
+            if (m.find()) {
+                return Optional.ofNullable(m.group(1));
+            }
+        } catch (Exception e) {
+            log.warn("Cannot extract Jira issue from {}", index, e);
+        }
+        return Optional.empty();
+    }
+
+    private void postComment(String issueKey, String reportUrl) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/json");
+        headers.set("Authorization", "Bearer " + jiraProperties.getApiToken());
+        Map<String, String> body = Collections.singletonMap("body", reportUrl);
+        HttpEntity<Map<String, String>> entity = new HttpEntity<>(body, headers);
+        String url = jiraProperties.getApiUrl() + "/rest/api/2/issue/" + issueKey + "/comment";
+        restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
     }
 }
