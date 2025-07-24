@@ -4,8 +4,6 @@
 /build
 /keys
 /allure
-corp-proxy-ca.crt
-.vscode/
 
 # Node
 /node

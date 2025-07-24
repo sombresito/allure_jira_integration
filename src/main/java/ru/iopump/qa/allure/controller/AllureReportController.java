@@ -24,7 +24,6 @@ import ru.iopump.qa.allure.model.ReportGenerateRequest;
 import ru.iopump.qa.allure.model.ReportResponse;
 import ru.iopump.qa.allure.properties.AllureProperties;
 import ru.iopump.qa.allure.service.JpaReportService;
-import ru.iopump.qa.allure.service.JiraService;
 import ru.iopump.qa.allure.service.ResultService;
 import ru.iopump.qa.util.StreamUtil;
 
@@ -78,7 +77,6 @@ public class AllureReportController {
     private final JpaReportService reportService;
     private final ResultService resultService;
     private final AllureProperties allureProperties;
-    private final JiraService jiraService;
 
     public String baseUrl() {
         return url(allureProperties);
@@ -116,11 +114,6 @@ public class AllureReportController {
                 reportGenerateRequest.isDeleteResults(),
                 reportGenerateRequest.getReportSpec().getExecutorInfo(),
                 baseUrl()
-        );
-
-        jiraService.addReportLinkComment(
-                reportService.getReportDirectory(reportEntity.getUuid()),
-                reportEntity.generateUrl(baseUrl(), allureProperties.reports().dir()) + "index.html"
         );
 
         return new ReportResponse(

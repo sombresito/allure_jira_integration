@@ -1,11 +1,2 @@
-pluginManagement {
-    repositories {
-        // Сначала — Plugin Portal
-        gradlePluginPortal()
-        // Потом — Maven Central для остальных зависимостей
-        mavenCentral()
-    }
-}
-
 rootProject.name = 'allure-server'
 

@@ -1,43 +1,35 @@
-# Используем только JRE-образ
-FROM eclipse-temurin:19-jre-jammy
+# Этап сборки
+FROM gradle:7.6-jdk19 AS build
+COPY . .
+ARG RELEASE_VERSION=5.0.3
+RUN gradle -Pversion=docker -i -s --no-daemon bootJar
 
-# --- Опционально: импорт ваших сертификатов ---
-# Копируем CA и импортируем в truststore
-COPY gtb-ssl-descryption.crt /tmp/gtb.crt
-COPY developer-ssl-descryption.crt /tmp/dev.crt
+# Этап выполнения (production)
+FROM eclipse-temurin:19-jre-jammy AS production
 
-RUN keytool -importcert \
-    -alias gtb-ssl-descryption \
-    -file /tmp/gtb.crt \
+# Копируем банковские сертификаты в образ
+COPY gtb-ssl-descryption.crt /tmp/gtb-ssl-descryption.crt
+COPY developer-ssl-descryption.crt /tmp/developer-ssl-descryption.crt
+
+# Добавляем сертификаты в truststore внутри образа
+RUN keytool -importcert -trustcacerts -alias gtb-ssl-descryption \
+    -file /tmp/gtb-ssl-descryption.crt \
     -keystore $JAVA_HOME/lib/security/cacerts \
-    -storepass changeit \
-    -noprompt && \
-  keytool -importcert \
-    -alias developer-proxy-ca \
-    -file /tmp/dev.crt \
+    -storepass changeit -noprompt && \
+    keytool -importcert -trustcacerts -alias developer-proxy-ca \
+    -file /tmp/developer-ssl-descryption.crt \
     -keystore $JAVA_HOME/lib/security/cacerts \
-    -storepass changeit \
-    -noprompt && \
-  rm /tmp/gtb.crt /tmp/dev.crt
+    -storepass changeit -noprompt && \
+    rm /tmp/gtb-ssl-descryption.crt /tmp/developer-ssl-descryption.crt
 
-# Копируем ваш готовый JAR (убедитесь, что он лежит рядом с Dockerfile)
-ARG JAR_FILE=allure-server-docker.jar
-COPY ${JAR_FILE} /app/${JAR_FILE}
+# Копируем собранный jar из стадии build
+COPY --from=build /home/gradle/build/libs/allure-server-docker.jar /allure-server-docker.jar
 
-WORKDIR /app
+# Открываем порт
+EXPOSE ${PORT:-8080}
 
-# Публикуем порт
-EXPOSE ${PORT:-9443}
-
-# Задаём опции JVM
+# Настройки Java
 ENV JAVA_OPTS="-Xms256m -Xmx2048m"
 
-# Запускаем приложение
-ENV SPRING_PROFILES_ACTIVE=${PROFILE:-default}
-
-ENTRYPOINT sh -c 'java \
-  -Dloader.path=/ext \
-  -cp allure-server-docker.jar \
-  -Dspring.profiles.active=${PROFILE:-default} \
-  org.springframework.boot.loader.PropertiesLauncher'
-
+# Запуск приложения
+ENTRYPOINT ["java", "-Dloader.path=/ext", "-cp", "allure-server-docker.jar", "-Dspring.profiles.active=${PROFILE:default}", "org.springframework.boot.loader.PropertiesLauncher"]

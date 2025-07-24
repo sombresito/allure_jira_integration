@@ -11,12 +11,12 @@ public class JiraProperties {
     /**
      * URL API Jira
      */
-    private String apiUrl = "http://10.15.132.23:8080/";
+    private String apiUrl = "https://jira.bcc.kz";
 
     /**
      * Токен авторизации для API Jira
      */
-    private String apiToken = "OTk0MjI4MjcyMTA0Oin4cyGKvyXpVJ9VWTB8P9nLTLZg";
+    private String apiToken = "NTY1MTUxMjg3NjM4Oh2s8v4+gO1eqiyLXhDOv9qhdzO3";
 
     /**
      * Ключ проекта в Jira
