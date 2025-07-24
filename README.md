@@ -168,12 +168,18 @@ allure.server-base-url       | string                   |                       
 basic.auth.enable            | boolean                  | false                    | Enable Basic Authentication
 basic.auth.username          | string                   | admin                    | Username for basic auth
 basic.auth.password          | string                   | admin                    | Password for basic auth
+jira.apiUrl                  | string                   | https://jira.bcc.kz
+   | Base URL of Jira REST API
+jira.apiToken                | string                   |
+   | Bearer token for Jira API
 allure.clean.dryRun          | boolean                  | false                    | Don't delete but print logs. For testing
 allure.clean.time            | LocalTime "HH[:mm][:ss]" | 00:00                    | Time to check reports age/ Scheduler start once per day
 allure.clean.ageDays         | int                      | 90                       | Max age for all reports. But exclude specified paths in 'allure.clean.paths'
 allure.clean.paths[].path    | String                   | manual_uploaded          | Report path
 allure.clean.paths[].ageDays | int                      | 30                       | Max age for reports with this path
 
+### Jira integration
+Allure server automatically posts a comment to Jira for every issue link found in test results. Configure `jira.apiUrl` and `jira.apiToken` to enable this.
 > Every spring boot setting can be passed through ENV variables with a little changes according to [spring boot cfg docs](https://docs.spring.io/spring-boot/docs/1.5.5.RELEASE/reference/html/boot-features-external-config.html)
 > For example: `allure.report.host` transform to `ALLURE_REPORT_HOST`
 
