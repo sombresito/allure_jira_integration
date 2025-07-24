@@ -24,6 +24,7 @@ import ru.iopump.qa.allure.entity.ReportEntity;
 import ru.iopump.qa.allure.helper.AllureReportGenerator;
 import ru.iopump.qa.allure.helper.OldReportsFormatConverterHelper;
 import ru.iopump.qa.allure.helper.ServeRedirectHelper;
+import ru.iopump.qa.allure.service.JiraService;
 import ru.iopump.qa.allure.properties.AllureProperties;
 import ru.iopump.qa.allure.properties.ReportProperties;
 import ru.iopump.qa.allure.repo.JpaReportRepository;
@@ -68,6 +69,7 @@ public class JpaReportService {
     private final ServeRedirectHelper redirection;
     private final JpaReportRepository repository;
     private final ResultService reportUnzipService;
+    private final JiraService jiraService;
     private final AtomicBoolean init = new AtomicBoolean();
 
     public JpaReportService(AllureProperties cfg,
@@ -75,7 +77,8 @@ public class JpaReportService {
                             JpaReportRepository repository,
                             AllureReportGenerator reportGenerator,
                             ServeRedirectHelper redirection,
-                            ReportProperties reportProperties
+                            ReportProperties reportProperties,
+                            JiraService jiraService
     ) {
         this.reportProperties = reportProperties;
         this.reportsDir = cfg.reports().dirPath();
@@ -85,6 +88,7 @@ public class JpaReportService {
         this.reportGenerator = reportGenerator;
         this.redirection = redirection;
         this.reportUnzipService = new ResultService(reportsDir);
+        this.jiraService = jiraService;
     }
 
     @PostConstruct
@@ -262,6 +266,16 @@ public class JpaReportService {
         addReportTypeToTitle(mainReportPreprodIndexHtml, "Allure Report Preprod", "Preprod");
         addReportTypeToTitle(mainReportETEIndexHtml, "Allure Report E2E", "E2E");
         addReportTypeToTitle(mainReportColvirIndexHtml, "Allure Report Colvir", "Colvir");
+
+        var issueKeys = extractIssueKeys(resultDirs);
+        for (String key : issueKeys) {
+            try {
+                jiraService.addComment(key,
+                        "Allure report: " + newEntity.generateUrl(baseUrl, cfg.reports().dir()));
+            } catch (Exception e) {
+                log.warn("Failed to post comment to Jira issue {}", key, e);
+            }
+        }
 
         return newEntity;
     }
@@ -1206,6 +1220,42 @@ public class JpaReportService {
         } catch (Exception e) {
             System.err.println("Error updating summary report: " + e.getMessage());
         }
+    }
+
+    List<String> extractIssueKeys(List<Path> resultDirs) {
+        List<String> keys = new ArrayList<>();
+        for (Path dir : resultDirs) {
+            if (!Files.isDirectory(dir)) {
+                continue;
+            }
+            try (var stream = Files.list(dir)) {
+                stream.filter(p -> p.getFileName().toString().endsWith("-result.json"))
+                        .forEach(p -> {
+                            try {
+                                JsonNode root = objectMapper.readTree(p.toFile());
+                                JsonNode links = root.path("links");
+                                if (links.isArray()) {
+                                    for (JsonNode link : links) {
+                                        String url = link.path("url").asText();
+                                        if (url.contains("/browse/")) {
+                                            String key = url.substring(url.lastIndexOf('/') + 1);
+                                            int q = key.indexOf('?');
+                                            if (q >= 0) {
+                                                key = key.substring(0, q);
+                                            }
+                                            keys.add(key);
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                log.warn("Can't read issue links from {}", p, e);
+                            }
+                        });
+            } catch (IOException e) {
+                log.warn("Can't scan result dir {}", dir, e);
+            }
+        }
+        return keys;
     }
 
 

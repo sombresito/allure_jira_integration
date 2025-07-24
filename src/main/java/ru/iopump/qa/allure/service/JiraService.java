@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -53,6 +54,19 @@ public class JiraService {
 
         log.info("Задача успешно создана в Jira: {}", response.getBody());
         return Objects.requireNonNull(response.getBody()).getKey();
+    }
+
+    public void addComment(String issueKey, String text) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(jiraProperties.getApiToken());
+
+        HttpEntity<Map<String, String>> entity = new HttpEntity<>(
+                Collections.singletonMap("body", text), headers);
+
+        String url = String.format("%s/rest/api/2/issue/%s/comment",
+                jiraProperties.getApiUrl(), issueKey);
+        restTemplate.exchange(url, HttpMethod.POST, entity, Void.class);
     }
 
 
